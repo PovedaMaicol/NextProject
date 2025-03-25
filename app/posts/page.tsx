@@ -1,6 +1,7 @@
 import PostCard from '@/components/PostCard';
 import React, { JSX } from 'react'
 import { Post } from "@/types/postTypes"
+import "./Posts.css";
 
 const loadPosts = async (): Promise<Post[]>=> {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts')
@@ -18,8 +19,7 @@ const postsPage = async (): Promise<JSX.Element> => {
     console.log(posts)
 
   return (
-    <div>
-        <h1>postsPage</h1>
+    <div className='grid'>
         {
             posts.map(post => (
              <PostCard 
