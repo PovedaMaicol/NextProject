@@ -1,23 +1,25 @@
 import PostCard from '@/components/PostCard';
 import React, { JSX } from 'react'
-import { Post } from "../../types/postTypes"
+import { Post } from "@/types/postTypes"
 
 const loadPosts = async (): Promise<Post[]>=> {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts')
   const data = await res.json()
+
+  // await new Promise(resolve => setTimeout(resolve, 3000))
   return data;
 }
 
 
 
-const page = async (): Promise<JSX.Element> => {
+const postsPage = async (): Promise<JSX.Element> => {
 
     const posts = await loadPosts()
     console.log(posts)
 
   return (
     <div>
-        <h1>posts page</h1>
+        <h1>postsPage</h1>
         {
             posts.map(post => (
              <PostCard 
@@ -30,4 +32,4 @@ const page = async (): Promise<JSX.Element> => {
   )
 }
 
-export default page
+export default postsPage
